@@ -1,0 +1,45 @@
+version: "3.1"
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: temper-docker-mysql
+    working_dir: /application
+    volumes:
+      - .:/application
+      # Copy our custom SQL file to /docker-entrypoint-initdb.d folder
+      # - ./phpdocker/database/init:/docker-entrypoint-initdb.d
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_DATABASE=homestead
+      - MYSQL_USER=homestead
+      - MYSQL_PASSWORD=secret
+    ports:
+      - "2300:3306"
+    networks:
+      - temper
+
+  webserver:
+    image: nginx:alpine
+    container_name: temper-docker-webserver
+    working_dir: /application
+    volumes:
+      - .:/application
+      - ./phpdocker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "80:80"
+    networks:
+      - temper
+
+  php-fpm:
+    build: phpdocker/php-fpm
+    container_name: temper-docker-php-fpm
+    working_dir: /application
+    volumes:
+      - .:/application
+      - ./phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/7.2/fpm/conf.d/99-overrides.ini
+    networks:
+      - temper
+
+networks:
+  temper:
+    driver: bridge
