@@ -62,11 +62,19 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            #container {
+	min-width: 750px;
+	max-width: 1200px;
+	height: 400px;
+	margin: 0 auto
+}
         </style>
     </head>
     <body>
+    
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
+        <div id="container"></div>
+            {{--  @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
@@ -89,7 +97,67 @@
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
-            </div>
+            </div>  --}}
         </div>
+        <script
+			  src="https://code.jquery.com/jquery-3.4.1.min.js"
+			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+			  crossorigin="anonymous"></script>
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script>
+        $(function() {
+            Highcharts.chart('container', {
+
+    title: {
+        text: 'OnBoarding Retention Curve'
+    },
+
+    subtitle: {
+        text: ''
+    },
+    xAxis: {
+        categories: ['Create account', 'Activate account', 'Provide profile information', 'What jobs are you interested in?', 'Do you have relevant experience in these jobs?', 'Are you a freelancer?', 'Waiting for approval', 'Approval']
+    },
+
+    yAxis: {
+        title: {
+            text: 'Percentage Completed'
+        }
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle'
+    },
+
+    plotOptions: {
+        series: {
+            label: {
+                connectorAllowed: false
+            },
+            pointStart: 0
+        }
+    },
+
+    series: {{ json_encode($series)}},
+
+    responsive: {
+        rules: [{
+            condition: {
+                maxWidth: 0
+            },
+            chartOptions: {
+                legend: {
+                    layout: 'horizontal',
+                    align: 'center',
+                    verticalAlign: 'bottom'
+                }
+            }
+        }]
+    }
+
+});
+        });
+        </script>
     </body>
 </html>
