@@ -21,12 +21,13 @@ class HomePageTest extends DuskTestCase
 
         $this->browse(function (Browser $browser) use ($seriesData) {
             $browser->visit('/')
-                ->assertSee('Tempr')
+                ->pause(2000)
+                ->assertSee('Tmpr')
                 ->assertSee('2016-07-19')
                 ->assertSee('2016-07-26')
                 ->assertSee('2016-08-02')
                 ->assertSee('2016-08-09')
-                ->assertVue('chartOptions.title.text', 'Tempr Weekly Retention Chart', '@app')
+                ->assertVue('chartOptions.title.text', 'Tmpr Weekly Retention Chart', '@app')
                 // test that the loaded data is viewed on the vue component
                 ->assertVue('chartOptions.series', $seriesData, '@app');
         });
