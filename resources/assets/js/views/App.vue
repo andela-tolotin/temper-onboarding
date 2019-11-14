@@ -37,7 +37,7 @@ export default {
         return {
             chartOptions: {
                 title: {
-                    text: 'Tempr Weekly Retention Chart'
+                    text: 'Tmpr Weekly Retention Chart'
                 },
 
                 subtitle: {
