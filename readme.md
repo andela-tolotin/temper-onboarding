@@ -16,7 +16,7 @@ This application uses docker for the development environment
 ![Alt text](https://github.com/andela-tolotin/temper-onboarding/blob/master/public/screenshots/OnBoarding%20Retention%20Chart.png?raw=true "OnBoarding Retention Chart")
 
 ### Running the Tests
-- Testing the Vue Component. The chart rendering uses the Vue component and the test was carried out with Laravel Dusk
-Run `php artisan dusk`. If the chromedriver failed to start follow https://medium.com/@olotintemitope/eating-end-to-end-testing-in-laravel-like-noodles-5848a3cf941c to learn how to configure it properly
+- Testing the Vue Component. The chart rendering uses the Vue component and the test was carried out using Laravel Dusk.
+- Run `php artisan dusk`. If the chromedriver failed to start follow https://medium.com/@olotintemitope/eating-end-to-end-testing-in-laravel-like-noodles-5848a3cf941c to learn how to configure it properly
 
 - For the unit test Run `vendor/bin/phpunit`
