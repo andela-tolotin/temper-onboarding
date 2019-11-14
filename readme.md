@@ -1,4 +1,4 @@
-## Tmpr Weekly OnBoarding RetentionUsing Highcharts
+## Tmpr Weekly OnBoarding Retention Using Highcharts
 
 ### How to Install
 - Clone this repository by running `git clone https://github.com/andela-tolotin/temper-onboarding.git` on your terminal
