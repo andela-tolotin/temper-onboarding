@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Contract\DataSourceInterface;
 use Illuminate\Support\ServiceProvider;
+use App\Repositories\FileReaderRepository;
 
 class DataSourceServiceProvider extends ServiceProvider
 {
@@ -23,6 +25,6 @@ class DataSourceServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('DataSourceInterface', 'FileReaderRepository');
+        $this->app->bind(DataSourceInterface::class, FileReaderRepository::class);
     }
 }
