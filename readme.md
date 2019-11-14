@@ -1,7 +1,7 @@
 ## Tmpr Weekly OnBoarding Retention Chart
 
 ### How to Install
-
+- Run composer install on your terminal or follow https://getcomposer.org/ on how to setup one 
 This application uses docker for the development environment
 - Download Docker[https://www.docker.com/] if you do not have it installed on your local machine
 - After installation, lauch docker
@@ -14,3 +14,9 @@ This application uses docker for the development environment
 
 ### Screenshots
 ![Alt text](https://github.com/andela-tolotin/temper-onboarding/blob/master/public/screenshots/OnBoarding%20Retention%20Chart.png?raw=true "OnBoarding Retention Chart")
+
+### Running the Tests
+- Testing the Vue Component. The chart rendering uses the Vue component and the test was carried out with Laravel Dusk
+Run `php artisan dusk`. If the chromedriver failed to start follow https://medium.com/@olotintemitope/eating-end-to-end-testing-in-laravel-like-noodles-5848a3cf941c to learn how to configure it properly
+
+- For the unit test Run `vendor/bin/phpunit`
