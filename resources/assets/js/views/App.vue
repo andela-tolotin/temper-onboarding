@@ -37,7 +37,7 @@ export default {
         return {
             chartOptions: {
                 title: {
-                    text: 'Tempr OnBoarding Retention Chart'
+                    text: 'Tempr Weekly Retention Chart'
                 },
 
                 subtitle: {
@@ -49,8 +49,13 @@ export default {
 
                 yAxis: {
                     title: {
-                        text: 'Stages Completed'
-                    }
+                        text: 'Percentage Completed'
+                    },
+                    labels: {
+                        formatter: function() {
+                            return this.value + ' %';
+                        }
+                    },
                 },
                 legend: {
                     layout: 'vertical',
@@ -80,6 +85,11 @@ export default {
                             }
                         }
                     }]
+                }
+                ,tooltip: {
+                    formatter: function() {
+                        return 'Only ' + this.y + '%, users completed "' + this.x + '" for the week ' +  this.series.name;
+                    }
                 }
             }
         }
