@@ -149,4 +149,23 @@ class ChartPlotterRepository
 
         return iterator_to_array($mergedOnBoardingPercentages, false);
     }
+
+    /**
+     * This method get the chart series
+     *
+     * @return array chartSeries
+     */
+    public function getChartSeries()
+    {
+        $chartSeries = [];
+
+        foreach ($this->getWeeklyOnBoardingPercentages() as $week => $perscentages) {
+            $chartSeries[] =  [
+                'name' => $week,
+                'data' => array_values($perscentages),
+            ];
+        }
+
+        return $chartSeries;
+    }
 }
