@@ -29,7 +29,11 @@ class HomeController extends Controller
         return view("home");
     }
 
-
+    /**
+     * This method gets the chart series data
+     *
+     * @return response
+     */
     public function fetchChartData()
     {
         $file = resource_path() . '/assets/documents/temper.csv';
