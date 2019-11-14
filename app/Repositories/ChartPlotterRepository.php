@@ -13,12 +13,12 @@ class ChartPlotterRepository
     /**
      * @var $fileReaderRepository
      */
+    protected $fileReaderRepository;
 
     /**
      * @var $onboardingrecords
      */
-
-    protected $fileReaderRepository;
+    protected $onboardingrecords;
 
     public function __construct(FileReaderRepository $fileReaderRepository)
     {
@@ -32,7 +32,7 @@ class ChartPlotterRepository
      *
      * @return array $onboardingRecords
      */
-    public function mapHeadersToRows(): array
+    public function mapHeadersToColumns(): array
     {
         $fileheaders = [];
         $associativeOnboardingData = [];
@@ -63,7 +63,7 @@ class ChartPlotterRepository
 
         $onBoardingPercentages = ['0', '20', '40', '50', '70', '90', '99', '100'];
 
-        foreach ($this->mapHeadersToRows() as $mappedOnboardingRecord) {
+        foreach ($this->mapHeadersToColumns() as $mappedOnboardingRecord) {
             $onboardingCreatedDate = empty($mappedOnboardingRecord['created_at']) ? 0 : $mappedOnboardingRecord['created_at'];
 
             $onBoardingPercentage = $mappedOnboardingRecord['onboarding_perentage'];
