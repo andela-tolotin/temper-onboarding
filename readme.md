@@ -1,6 +1,7 @@
 ## Tmpr Weekly OnBoarding Retention Chart Using Highcharts
 
 ### How to Install
+- Clone this repository by running `git clone https://github.com/andela-tolotin/temper-onboarding.git` on your terminal
 - Run composer install on your terminal or follow https://getcomposer.org/ on how to setup one 
 This application uses docker for the development environment
 - Download Docker[https://www.docker.com/] if you do not have it installed on your local machine
