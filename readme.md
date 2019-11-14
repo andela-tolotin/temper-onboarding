@@ -13,3 +13,4 @@ This application uses docker for the development environment
 - Go to your browser and type `localhost:9000` you should see the weekly chart loaded into your browser
 
 ### Screenshots
+![Alt text](/screenshots/OnBoarding Retention Chart.png?raw=true "OnBoarding Retention Chart")
