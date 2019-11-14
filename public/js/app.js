@@ -16214,7 +16214,7 @@ var render = function() {
             _c(
               "router-link",
               { staticClass: "navbar-brand", attrs: { to: { name: "home" } } },
-              [_vm._v("Tempr")]
+              [_vm._v("Tmpr")]
             )
           ],
           1
