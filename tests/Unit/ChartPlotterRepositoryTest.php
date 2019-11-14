@@ -8,7 +8,6 @@ use Tests\Stubs\DataTrait;
 use Illuminate\Http\UploadedFile;
 use App\Repositories\FileReaderRepository;
 use App\Repositories\ChartPlotterRepository;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ChartPlotterRepositoryTest extends TestCase
 {
