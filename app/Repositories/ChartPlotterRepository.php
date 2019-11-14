@@ -23,8 +23,16 @@ class ChartPlotterRepository
     public function __construct(FileReaderRepository $fileReaderRepository)
     {
         $this->fileReaderRepository = $fileReaderRepository;
+    }
 
-        $this->onboardingrecords = $this->fileReaderRepository->getData();
+    /**
+     * This method returns file data
+     *
+     * @return array
+     */
+    public function getOnBoardingRecords()
+    {
+        return $this->fileReaderRepository->getData();
     }
 
     /**
@@ -36,12 +44,13 @@ class ChartPlotterRepository
     {
         $fileheaders = [];
         $associativeOnboardingData = [];
+        $onboardingRecords = $this->getOnBoardingRecords();
 
-        foreach ($this->onboardingrecords as $key => $onboardingRecord) {
+        foreach ($onboardingRecords  as $key => $onboardingRecord) {
             if (0 === $key) {
                 $fileheaders = array_values($onboardingRecord);
                 if (array_sum($onboardingRecord) > 0) {
-                    return $this->onboardingrecords;
+                    return $onboardingRecords;
                 }
             } else {
                 $eachRow = array_values($onboardingRecord);

@@ -61,6 +61,7 @@ class FileReaderRepository implements DataSourceInterface
             }
             fclose($handle);
         }
+
         return $this->onboardingrecords;
     }
 }
