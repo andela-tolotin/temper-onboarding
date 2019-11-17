@@ -12,7 +12,7 @@
 - Finally, go to your browser and type `http://localhost:9000` you should see the weekly chart loaded into your browser
 
 ### Screenshots
-![Alt text](https://github.com/andela-tolotin/temper-onboarding/blob/master/public/screenshots/OnBoarding%20Retention%20Chart.png?raw=true "OnBoarding Retention Chart")
+![Alt text](https://github.com/andela-tolotin/temper-onboarding/blob/master/public/screenshots/OnBoarding_Retention_Chart.png?raw=true "OnBoarding Retention Chart")
 
 ### Running the Tests
 - Testing Highcharts. The chart rendering uses the Vue component and the test was carried out using Laravel Dusk.
