@@ -125,7 +125,7 @@ class ChartPlotterRepository
     public function getWeeklyOnBoardingPercentages()
     {
         $weeklyOnBoardingPercentages = [];
-        $percentages = ['0' => 0, '20' => 0, '40' => 0, '50' => 0, '70' => 0, '90' => 0, '99' => 0, '100' => 0];
+        $percentages = ['0' => 100, '20' => 0, '40' => 0, '50' => 0, '70' => 0, '90' => 0, '99' => 0, '100' => 0];
 
         foreach ($this->groupOnBoardRecordsByWeek() as $startDateofTheWeek => $onBoardingPercentages) {
             $flattenedWeeklyPercentage = $this->mergeWeeklyPercentages($onBoardingPercentages);
