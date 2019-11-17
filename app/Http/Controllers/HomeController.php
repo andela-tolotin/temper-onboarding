@@ -31,11 +31,14 @@ class HomeController extends Controller
      */
     public function fetchChartData()
     {
-        $file = resource_path() . '/assets/documents/temper.csv';
+        try {
+            $file = resource_path() . '/assets/documents/temper.csv';
+            $this->dataReader->readFile($file);
+            $this->chartPlotterRepository = new ChartPlotterRepository($this->dataReader);
 
-        $this->dataReader->readFile($file);
-        $this->chartPlotterRepository = new ChartPlotterRepository($this->dataReader);
-
-        return response()->json($this->chartPlotterRepository->getChartSeries());
+            return response()->json($this->chartPlotterRepository->getChartSeries());
+        } catch (Exception $e) {
+            return response()->json(['error' => $e->getMessage()], $e->getStatusCode());
+        }
     }
 }

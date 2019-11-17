@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use Exception;
 use App\Contract\DataSourceInterface;
 use Symfony\Component\HttpFoundation\File\File;
 
@@ -41,25 +42,29 @@ class FileReaderRepository implements DataSourceInterface
      */
     public function readFile(string $file): array
     {
-        $file = new File($file);
+        try {
+            $file = new File($file);
 
-        if ('text/plain' !== $file->getMimeType()) {
-            return false;
-        }
-
-        $ignore = $this->csvConfig['ignoreLines'];
-
-        if (false !== ($handle = fopen($file, 'r'))) {
-            $filesize = filesize($file);
-            $i = 0;
-            while (false !== ($row = fgetcsv($handle, $filesize, $this->csvConfig['delimiter'], $this->csvConfig['enclosure']))) {
-                ++$i;
-                if ($ignore && $i <= $ignore) {
-                    continue;
-                }
-                $this->onboardingrecords[] = $row;
+            if ('text/plain' !== $file->getMimeType()) {
+                return false;
             }
-            fclose($handle);
+
+            $ignore = $this->csvConfig['ignoreLines'];
+
+            if (false !== ($handle = fopen($file, 'r'))) {
+                $filesize = filesize($file);
+                $i = 0;
+                while (false !== ($row = fgetcsv($handle, $filesize, $this->csvConfig['delimiter'], $this->csvConfig['enclosure']))) {
+                    ++$i;
+                    if ($ignore && $i <= $ignore) {
+                        continue;
+                    }
+                    $this->onboardingrecords[] = $row;
+                }
+                fclose($handle);
+            }
+        } catch (Exception $e) {
+            throw new $e(false, true);
         }
 
         return $this->onboardingrecords;
